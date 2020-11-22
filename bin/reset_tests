@@ -1,0 +1,6 @@
+#!/usr/bin/env ash
+
+bin/console cache:clear -e test $@
+bin/console doctrine:schema:drop -e test --force $@
+bin/console doctrine:schema:create -e test $@
+bin/console doctrine:fixtures:load -e test -n $@

@@ -1,0 +1,16 @@
+server {
+    listen ${NGINX_PORT} default_server;
+
+    server_name bookstore_nginx;
+
+    root /var/www/html/public;
+
+    location / {
+        fastcgi_buffer_size 32k;
+        fastcgi_buffers 4 32k;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+        include fastcgi_params;
+    }
+}

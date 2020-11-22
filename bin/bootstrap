@@ -1,0 +1,6 @@
+#!/usr/bin/env ash
+
+composer install
+bin/console cache:clear
+bin/console doctrine:migrations:migrate --no-interaction
+bin/console database:fill --authorCount=10000 --bookCount=10000
