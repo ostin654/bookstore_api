@@ -8,17 +8,17 @@
 
 Download dependences, clear cache, apply migrations and fill database.
 
-`docker exec bookstore_php bin/bootstrap`
+`docker-compose run --rm php bin/bootstrap`
 
 # How to run tests
 
 ## Prepare environment
 
-`docker exec -e DATABASE_URL="postgresql://bookstore_test:bookstore_test@db:5432/bookstore_test?serverVersion=12&charset=utf8" bookstore_php bin/reset_tests`
+`docker-compose run --rm tests bin/reset_tests`
 
 ## Run tests
 
-`docker exec -e DATABASE_URL="postgresql://bookstore_test:bookstore_test@db:5432/bookstore_test?serverVersion=12&charset=utf8" bookstore_php bin/phpunit`
+`docker-compose run --rm tests bin/phpunit`
 
 # API examples
 

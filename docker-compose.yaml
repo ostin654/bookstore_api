@@ -13,7 +13,19 @@ services:
     volumes:
       - "${PWD}:/var/www/html"
     environment:
+      APP_ENV: dev
       DATABASE_URL: "postgresql://bookstore:bookstore@db:5432/bookstore?serverVersion=12&charset=utf8"
+    depends_on:
+      - db
+  tests:
+    build:
+      context: ./docker/tests
+    container_name: bookstore_tests
+    volumes:
+      - "${PWD}:/var/www/html"
+    environment:
+      APP_ENV: test
+      DATABASE_URL: "postgresql://bookstore_test:bookstore_test@db:5432/bookstore_test?serverVersion=12&charset=utf8"
     depends_on:
       - db
   nginx:

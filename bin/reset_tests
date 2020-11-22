@@ -1,6 +1,7 @@
 #!/usr/bin/env ash
 
-bin/console cache:clear -e test $@
-bin/console doctrine:schema:drop -e test --force $@
-bin/console doctrine:schema:create -e test $@
-bin/console doctrine:fixtures:load -e test -n $@
+composer install
+bin/console cache:clear $@
+bin/console doctrine:schema:drop --force $@
+bin/console doctrine:schema:create $@
+bin/console doctrine:fixtures:load -n $@
